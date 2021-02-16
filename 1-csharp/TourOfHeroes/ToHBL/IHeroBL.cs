@@ -5,7 +5,7 @@ namespace ToHBL
 {
     public interface IHeroBL
     {
-         List<Hero> GetHeros();
-         void AddHero(Hero newHero);
+        List<Hero> GetHeroes();
+        void AddHero(Hero newHero);
     }
 }
