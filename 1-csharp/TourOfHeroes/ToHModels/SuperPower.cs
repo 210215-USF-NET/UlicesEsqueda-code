@@ -7,5 +7,7 @@ namespace ToHModels
         public int Damage { get; set; }
         public String Description { get; set; }
         public String Name { get; set; }
+
+        public override string ToString() => $"\n\t name: {this.Name} \n\t damage: {this.Damage} \n\t description: {this.Description}";
     }
 }

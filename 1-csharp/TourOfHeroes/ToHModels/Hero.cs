@@ -27,8 +27,6 @@ namespace ToHModels
     public class Hero
     {
         private string heroName;
-        private int hP;
-
         public string HeroName { 
             get { 
                 return heroName;
@@ -44,6 +42,8 @@ namespace ToHModels
         public Element ElementType { get; set; }
 
         public SuperPower SuperPower { get; set; }
+
+        public override string ToString() => $"\n\t name: {this.heroName} \n\t hp: {this.HP} \n\t element: {this.ElementType} \n\t superpower: {this.SuperPower.ToString()}";
 
     }
 }
