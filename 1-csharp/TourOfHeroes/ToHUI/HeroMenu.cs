@@ -28,8 +28,15 @@ namespace ToHUI
                 switch (userInput)
                 {
                     case "0":
-                        CreateHero();
-                        break;
+                        try
+                        {
+                            CreateHero();
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Invalid Input");
+                        }
+                        continue;
                     case "1":
                         GetHeroes();
                         break;

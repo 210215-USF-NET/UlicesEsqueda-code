@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ToHModels;
 using System.IO;
 using System.Text.Json;
+using System;
 
 namespace ToHDL
 {
@@ -11,7 +12,9 @@ namespace ToHDL
         private string filePath = "./ToHDL/HeroFiles.json";
         public Hero AddHero(Hero newHero)
         {
-            jsonString = JsonSerializer.Serialize(newHero);
+            List<Hero> heroesFromFile = GetHeroes(); //This is going to get me an exception.
+            heroesFromFile.Add(newHero);
+            jsonString = JsonSerializer.Serialize(heroesFromFile);
             File.WriteAllText(filePath, jsonString);
 
             return newHero;
@@ -19,10 +22,15 @@ namespace ToHDL
 
         public List<Hero> GetHeroes()
         {
-            jsonString = File.ReadAllText(filePath);
-            Hero fileHero = JsonSerializer.Deserialize<Hero>(jsonString);
-
-            return new List<Hero> { fileHero };
+            try
+            {
+                jsonString = File.ReadAllText(filePath);
+            }
+            catch (Exception)
+            {
+                return new List<Hero>();
+            }
+            return JsonSerializer.Deserialize<List<Hero>>(jsonString);
         }
     }
 }
