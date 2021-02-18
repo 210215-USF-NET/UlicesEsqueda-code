@@ -35,8 +35,9 @@ namespace ToHUI
                         catch (Exception)
                         {
                             Console.WriteLine("Invalid Input");
+                            continue;
                         }
-                        continue;
+                        break;
                     case "1":
                         GetHeroes();
                         break;
@@ -45,7 +46,7 @@ namespace ToHUI
                         ExitRemarks();
                         break;
                     default:
-                        Console.WriteLine("Invalid input! Not part of Meny options!");
+                        Console.WriteLine("Invalid input! Not part of Menu options!");
                         break;
                 }
             } while(stay);
