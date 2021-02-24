@@ -6,7 +6,7 @@ using System;
 
 namespace ToHDL
 {
-    public class HeroRepoFile : IHeroRepository
+    public class HeroRepoFile //: IHeroRepository
     {
         private string jsonString;
         private string filePath = "./ToHDL/HeroFiles.json";
@@ -18,6 +18,11 @@ namespace ToHDL
             File.WriteAllText(filePath, jsonString);
 
             return newHero;
+        }
+
+        public Hero GetHeroByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Hero> GetHeroes()

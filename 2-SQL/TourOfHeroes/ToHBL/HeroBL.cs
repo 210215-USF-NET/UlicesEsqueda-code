@@ -16,10 +16,16 @@ namespace ToHBL
             _repo.AddHero(newHero);
         }
 
+        public Hero GetHeroByName(string name)
+        {
+            return _repo.GetHeroByName(name);
+        }
+
         public List<Hero> GetHeroes(){
             //TODO: add BL
             return _repo.GetHeroes();
         }
+
         
     }
 }

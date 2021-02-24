@@ -1,3 +1,4 @@
+appsettings.json
 # Created by https://www.toptal.com/developers/gitignore/api/csharp,vscode,dotnetcore
 # Edit at https://www.toptal.com/developers/gitignore?templates=csharp,vscode,dotnetcore
 
@@ -8,7 +9,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
-appsettings.json
 *.rsuser
 *.suo
 *.user

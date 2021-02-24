@@ -19,7 +19,8 @@ namespace ToHUI
                 Console.WriteLine("Welcome to my Tour of Heroes app! What would you like to do?");
                 Console.WriteLine("[0] Create a Hero");
                 Console.WriteLine("[1] Get all Heroes");
-                Console.WriteLine("[2] Exit.");
+                Console.WriteLine("[2] Search Hero by name.");
+                Console.WriteLine("[3] Exit.");
 
                 //Get user input.
                 Console.WriteLine("Enter a number: ");
@@ -42,6 +43,9 @@ namespace ToHUI
                         GetHeroes();
                         break;
                     case "2":
+                        SearchHero();
+                        break;
+                    case "3":
                         stay = false;
                         ExitRemarks();
                         break;
@@ -93,6 +97,17 @@ namespace ToHUI
 
         public void ExitRemarks(){
             Console.WriteLine("Goodbye friend. See you next time!");
+        }
+
+        public void SearchHero(){
+            Console.WriteLine("Enter hero name: ");
+            Hero foundHero = _heroBL.GetHeroByName(Console.ReadLine());
+            if (foundHero == null){
+                Console.WriteLine("No such hero found :<");
+            } 
+            else {
+                Console.WriteLine(foundHero.ToString());
+            }
         }
     }
 }
