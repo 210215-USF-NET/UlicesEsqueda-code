@@ -1,0 +1,1 @@
+[{"HeroName":"Spiderman","HP":100,"ElementType":1,"SuperPower":{"Damage":10,"Description":"Anythinga  spider can","Name":"Spidey Senses"}},{"HeroName":"Thor","HP":1000,"ElementType":3,"SuperPower":{"Damage":100,"Description":"He wields mjolnir as some sort of lightning rods to conrtrol lightning.","Name":"Thunder"}}]
