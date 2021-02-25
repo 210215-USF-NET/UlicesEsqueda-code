@@ -16,6 +16,11 @@ namespace ToHBL
             _repo.AddHero(newHero);
         }
 
+        public void DeleteHero(Hero hero2BDeleted)
+        {
+            _repo.DeleteHero(hero2BDeleted);
+        }
+
         public Hero GetHeroByName(string name)
         {
             return _repo.GetHeroByName(name);

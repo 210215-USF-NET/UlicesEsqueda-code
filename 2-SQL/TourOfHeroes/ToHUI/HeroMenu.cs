@@ -20,7 +20,8 @@ namespace ToHUI
                 Console.WriteLine("[0] Create a Hero");
                 Console.WriteLine("[1] Get all Heroes");
                 Console.WriteLine("[2] Search Hero by name.");
-                Console.WriteLine("[3] Exit.");
+                Console.WriteLine("[3] Delete a hero.");
+                Console.WriteLine("[4] Exit.");
 
                 //Get user input.
                 Console.WriteLine("Enter a number: ");
@@ -46,6 +47,9 @@ namespace ToHUI
                         SearchHero();
                         break;
                     case "3":
+                        DeleteHero();
+                        break;
+                    case "4":
                         stay = false;
                         ExitRemarks();
                         break;
@@ -107,6 +111,17 @@ namespace ToHUI
             } 
             else {
                 Console.WriteLine(foundHero.ToString());
+            }
+        }
+
+        public void DeleteHero(){
+            Console.WriteLine("Enter the hero you wish to be removed from the roster: ");
+            Hero hero2BDeleted = _heroBL.GetHeroByName(Console.ReadLine());
+            if(hero2BDeleted == null){
+                Console.WriteLine("We can't find the hero. They may have already been deleted. \nOr you typed their name wrong. This is a case sensitive application.");
+            } else {
+                _heroBL.DeleteHero(hero2BDeleted);
+                Console.WriteLine($"Success!!!!!!!!!!!!!!!! { hero2BDeleted.HeroName } is gone from your hero collection.");
             }
         }
     }
