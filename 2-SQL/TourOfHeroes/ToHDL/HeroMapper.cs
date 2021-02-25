@@ -15,17 +15,29 @@ namespace ToHDL
                 HeroName = hero.HeroName,
                 HP = hero.Hp,
                 ElementType = (Model.Element) hero.ElementType,
-                SuperPower = ParseSuperPower(hero.Superpowers.First())
+                SuperPower = ParseSuperPower(hero.Superpower),
+                Id = hero.Id
             };
         }
 
         public Entity.Hero ParseHero(Model.Hero hero)
         {
-            return new Entity.Hero{
+            if (hero.Id == null)
+            {
+                return new Entity.Hero{
                 HeroName = hero.HeroName,
                 Hp = hero.HP,
                 ElementType = (int) hero.ElementType,
-                Superpowers = new List<Entity.Superpower> {ParseSuperPower(hero.SuperPower)}
+                Superpower = ParseSuperPower(hero.SuperPower)
+                };
+            }
+            //For updating and deletion purposes
+            return new Entity.Hero{
+            HeroName = hero.HeroName,
+            Hp = hero.HP,
+            ElementType = (int) hero.ElementType,
+            Superpower = ParseSuperPower(hero.SuperPower),
+            Id = (int) hero.Id
             };
         }
 
@@ -34,16 +46,27 @@ namespace ToHDL
             return new SuperPower{
                 Name = superpower.Name,
                 Description = superpower.Description,
-                Damage = superpower.Damage
+                Damage = superpower.Damage,
+                Id = superpower.Id
             };
         }
 
         public Superpower ParseSuperPower(SuperPower superPower)
         {
-            return new Superpower{
+            //For adding new superpower
+            if(superPower.Id == null){
+                return new Superpower{
                 Name = superPower.Name,
                 Description = superPower.Description,
                 Damage = superPower.Damage
+                };
+            }
+            //For updating
+            return new Superpower{
+                Name = superPower.Name,
+                Description = superPower.Description,
+                Damage = superPower.Damage,
+                Id = (int) superPower.Id
             };
         }
     }

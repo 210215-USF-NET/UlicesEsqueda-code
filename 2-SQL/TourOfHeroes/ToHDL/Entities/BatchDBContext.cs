@@ -57,12 +57,15 @@ namespace ToHDL.Entities
                 entity.HasOne(d => d.ElementTypeNavigation)
                     .WithMany(p => p.Heroes)
                     .HasForeignKey(d => d.ElementType)
-                    .HasConstraintName("FK__heroes__elementT__04E4BC85");
+                    .HasConstraintName("FK__heroes__elementT__0C85DE4D");
             });
 
             modelBuilder.Entity<Superpower>(entity =>
             {
                 entity.ToTable("superpowers");
+
+                entity.HasIndex(e => e.Hero, "UQ__superpow__44A162CBE48C2D89")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -83,9 +86,9 @@ namespace ToHDL.Entities
                     .HasColumnName("name");
 
                 entity.HasOne(d => d.HeroNavigation)
-                    .WithMany(p => p.Superpowers)
-                    .HasForeignKey(d => d.Hero)
-                    .HasConstraintName("FK__superpower__hero__07C12930");
+                    .WithOne(p => p.Superpower)
+                    .HasForeignKey<Superpower>(d => d.Hero)
+                    .HasConstraintName("FK__superpower__hero__10566F31");
             });
 
             OnModelCreatingPartial(modelBuilder);
