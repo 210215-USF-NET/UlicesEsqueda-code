@@ -32,7 +32,7 @@ namespace ToHModels
                 return heroName;
             } 
             set {
-                if (value.Equals(null)) { /*TODO: throw exception*/ }
+                if (value==null || value.Equals("")) {throw new ArgumentNullException(); }
                     heroName = value;
             } 
         }
