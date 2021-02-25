@@ -21,7 +21,8 @@ namespace ToHUI
                 Console.WriteLine("[1] Get all Heroes");
                 Console.WriteLine("[2] Search Hero by name.");
                 Console.WriteLine("[3] Delete a hero.");
-                Console.WriteLine("[4] Exit.");
+                Console.WriteLine("[4] Update a hero.");
+                Console.WriteLine("[5] Exit.");
 
                 //Get user input.
                 Console.WriteLine("Enter a number: ");
@@ -50,6 +51,9 @@ namespace ToHUI
                         DeleteHero();
                         break;
                     case "4":
+                        UpdateHero();
+                        break;
+                    case "5":
                         stay = false;
                         ExitRemarks();
                         break;
@@ -62,6 +66,10 @@ namespace ToHUI
 
         public void CreateHero(){
             // Create hero method/logic
+            _heroBL.AddHero(GetHeroDetails());
+            Console.WriteLine($"Hero Successfully created!");
+        }
+        private Hero GetHeroDetails(){
             Hero newHero = new Hero();
 
             Console.WriteLine("Enter Hero Name: ");
@@ -85,9 +93,8 @@ namespace ToHUI
             newHero.SuperPower = newSuperPower;
             Console.WriteLine("Set the element of the hero: ");
             newHero.ElementType = Enum.Parse<Element>(Console.ReadLine());
-            
-            _heroBL.AddHero(newHero);
-            Console.WriteLine($"Hero Successfully created!");
+
+            return newHero;
         }
 
         public void GetHeroes(){
@@ -122,6 +129,18 @@ namespace ToHUI
             } else {
                 _heroBL.DeleteHero(hero2BDeleted);
                 Console.WriteLine($"Success!!!!!!!!!!!!!!!! { hero2BDeleted.HeroName } is gone from your hero collection.");
+            }
+        }
+
+        public void UpdateHero(){
+            Console.WriteLine("Enter the name of the hero you want to update: ");
+            Hero her2BUpdated = _heroBL.GetHeroByName(Console.ReadLine());
+            if(her2BUpdated == null){
+                Console.WriteLine("Well darn, can't find that hero. Maybe you want to create them instead?");
+            } else{
+                //Ask the end user for the details they want to change.
+                _heroBL.UpdateHero(her2BUpdated, GetHeroDetails());
+                Console.WriteLine("Hero successfully updated!");
             }
         }
     }
