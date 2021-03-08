@@ -42,7 +42,7 @@ namespace ToHModels
         public Element ElementType { get; set; }
 
         public SuperPower SuperPower { get; set; }
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public override string ToString() => $"\n\t name: {this.heroName} \n\t hp: {this.HP} \n\t element: {this.ElementType} \n\t superpower: {this.SuperPower.ToString()}";
 
