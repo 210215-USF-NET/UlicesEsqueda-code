@@ -25,5 +25,18 @@ namespace ToHDL
         public DbSet<Hero> Heroes { get; set; }
         public DbSet<SuperPower> SuperPowers { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Hero>()
+                .Property(hero => hero.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Hero>()
+                .HasOne(hero => hero.SuperPower)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
+
+        }
+
     }
 }
