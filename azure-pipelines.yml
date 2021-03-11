@@ -29,3 +29,10 @@ steps:
     publishWebProjects: false
     zipAfterPublish: true
     projects: '**/3-mcv/TourOfHeroes/ToHMVC/*.csproj'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(80be080e-ce60-4dd8-9b79-c249ac6c1a3f)'
+    appType: 'webApp'
+    WebAppName: 'TourDeHeroes'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
