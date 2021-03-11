@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/3-mcv/TourOfHeroes/*.sln'
+  solution: '**/4-devops/TourOfHeroes/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -18,21 +18,21 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/3-mcv/TourOfHeroes/*.sln'
+    projects: '**/4-devops/TourOfHeroes/*.sln'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/3-mcv/TourOfHeroes/ToHTests/*.csproj'
+    projects: '**/4-devops/TourOfHeroes/ToHTests/*.csproj'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
     zipAfterPublish: true
-    projects: '**/3-mcv/TourOfHeroes/ToHMVC/*.csproj'
+    projects: '**/4-devops/TourOfHeroes/ToHMVC/*.csproj'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(1)(80be080e-ce60-4dd8-9b79-c249ac6c1a3f)'
+    azureSubscription: 'Azure subscription 1(80be080e-ce60-4dd8-9b79-c249ac6c1a3f)'
     appType: 'webApp'
     WebAppName: 'TourDeHeroes'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
